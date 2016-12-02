@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import { Router, Route, browserHistory, Link } from 'react-router';
+import { Link } from 'react-router';
 import FormContainer from './forms';
 
-class AllPuppies extends Component {
+export class AllPuppies extends Component {
   constructor (props) {
     super(props);
     this.state = {};
@@ -41,7 +41,7 @@ class AllPuppies extends Component {
   }
 }
 
-class SinglePuppy extends Component {
+export class SinglePuppy extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -61,7 +61,7 @@ class SinglePuppy extends Component {
   render() {
     const puppy = this.state.puppy;
     return (
-      <div>
+      <div className="m1">
       { puppy ?
         <div>
         <h4>{puppy.name}</h4>
@@ -78,18 +78,6 @@ class SinglePuppy extends Component {
   }
 }
 
-const Toy = (props) => {
+export const Toy = (props) => {
   return <p>{props.toy}</p>
 };
-
-ReactDOM.render(
-  <Router history={browserHistory}>
-    <Route path="/" component={AllPuppies}>
-      <Route path="sayHi" component={FormContainer} />
-    </ Route>
-    <Route path="/puppies/:puppyName" component={SinglePuppy}>
-      <Route path="toy" component={Toy} />
-    </ Route>
-  </ Router>,
-  document.getElementById('app')
-);
