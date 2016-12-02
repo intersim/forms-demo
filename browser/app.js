@@ -23,7 +23,7 @@ class AllPuppies extends Component {
   render () {
     const { puppies } = this.state; 
     return (
-      <div>
+      <div className="m1">
         <h3>Puppy Index:</h3>
         { puppies && puppies.map(puppy => {
             return (
@@ -32,10 +32,9 @@ class AllPuppies extends Component {
               </div>
             );
         }) }
-      </div>
-      <div>
-        <h3>Say Something</h3>
-        // TO-DO: what props to pass to FormContainer? anything?
+        <br />
+        <Link to='/sayHi'>Say Something</Link>
+        {/* TO-DO: what props to pass to FormContainer? anything? */}
         { this.props.children ? React.cloneElement(this.props.children, {}) : null }
       </div>
     )
@@ -86,7 +85,7 @@ const Toy = (props) => {
 ReactDOM.render(
   <Router history={browserHistory}>
     <Route path="/" component={AllPuppies}>
-      <Route path="say-hi" component={FormContainer} />
+      <Route path="sayHi" component={FormContainer} />
     </ Route>
     <Route path="/puppies/:puppyName" component={SinglePuppy}>
       <Route path="toy" component={Toy} />

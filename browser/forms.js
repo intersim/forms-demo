@@ -16,6 +16,7 @@ const Form = (props) => {
           onChange={handleChange}
           value={inputValue}
         />
+        <button type="submit" className="btn btn-outline">Submit</button>
       </form>
   );
 }
@@ -32,6 +33,7 @@ class FormContainer extends Component {
 
   handleChange (evt) {
     const value = evt.target.value;
+    console.log(value);
     this.setState({
       inputValue: value
     });
@@ -39,10 +41,12 @@ class FormContainer extends Component {
 
   handleSubmit (evt) {
     evt.preventDefault();
+    console.log(evt);
     // ??? TO-DO
   }
 
   render () {
+  	const inputValue = this.state.inputValue;
     return (
       <Form
         handleChange={this.handleChange}
