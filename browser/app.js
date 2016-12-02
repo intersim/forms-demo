@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import {Router, Route, browserHistory, Link} from 'react-router';
+import { Router, Route, browserHistory, Link } from 'react-router';
+import FormContainer from './forms';
 
 class AllPuppies extends Component {
   constructor (props) {
@@ -31,6 +32,11 @@ class AllPuppies extends Component {
               </div>
             );
         }) }
+      </div>
+      <div>
+        <h3>Say Something</h3>
+        // TO-DO: what props to pass to FormContainer? anything?
+        { this.props.children ? React.cloneElement(this.props.children, {}) : null }
       </div>
     )
   }
@@ -79,7 +85,9 @@ const Toy = (props) => {
 
 ReactDOM.render(
   <Router history={browserHistory}>
-    <Route path="/" component={AllPuppies} />
+    <Route path="/" component={AllPuppies}>
+      <Route path="say-hi" component={FormContainer} />
+    </ Route>
     <Route path="/puppies/:puppyName" component={SinglePuppy}>
       <Route path="toy" component={Toy} />
     </ Route>
